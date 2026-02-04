@@ -2,48 +2,117 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>大石生物模試 解答</title>
+
   <style>
     body {
-      background-color: #e6ffe6;
-      font-family: system-ui, sans-serif;
       margin: 0;
       padding: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: linear-gradient(135deg, #d4f7d4, #b2e6c8);
+      min-height: 100vh;
     }
+
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 40px auto;
-      padding: 24px 32px;
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 30px;
+      background: #ffffffee;
+      backdrop-filter: blur(6px);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     }
-    h1 { text-align: center; color: #206030; }
-    a.link {
-      display: block;
-      padding: 14px;
-      margin-bottom: 16px;
-      background-color: #ccffcc;
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #145a32;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    .card {
+      background: #f6fff6;
+      border: 1px solid #c8eccc;
+      padding: 18px 20px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f3d2e;
+      margin-bottom: 8px;
+    }
+
+    .link {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 10px 14px;
+      background: #caffd0;
       border-radius: 8px;
       text-decoration: none;
-      color: #104020;
+      color: #0f3d2e;
       font-weight: 600;
-      border: 1px solid #a5e6a5;
+      border: 1px solid #a8e6b0;
+      transition: background 0.2s ease;
     }
-    a.link:hover { background-color: #b8ffb8; }
+
+    .link:hover {
+      background: #b6ffbf;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 15px;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+      .title {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>大石生物模試 解答</h1>
 
-    <a class="link" href="seibutumondaianswer.pdf" target="_blank">第1回 解答（PDF）</a>
-    <a class="link" href="neuronsanswer.pdf" target="_blank">第2回 解答（PDF）</a>
-    <a class="link" href="evolutionanswer.pdf" target="_blank">第3回 解答（PDF）</a>
-   <a class="link" href="homeostasisanswer.pdf" target="_blank">第4回 解答（PDF）</a>
-    <a class="link" href="index.html">▶ 模試ページに戻る</a>
+    <div class="card">
+      <div class="title">第1回 解答（PDF）</div>
+      <a class="link" href="seibutumondaianswer.pdf" target="_blank">開く</a>
+    </div>
+
+    <div class="card">
+      <div class="title">第2回 解答（PDF）</div>
+      <a class="link" href="neuronsanswer.pdf" target="_blank">開く</a>
+    </div>
+
+    <div class="card">
+      <div class="title">第3回 解答（PDF）</div>
+      <a class="link" href="evolutionanswer.pdf" target="_blank">開く</a>
+    </div>
+
+    <div class="card">
+      <div class="title">第4回 解答（PDF）</div>
+      <a class="link" href="homeostasisanswer.pdf" target="_blank">開く</a>
+    </div>
+
+    <div style="text-align:center; margin-top:25px;">
+      <a class="link" href="index.html">▶ 模試ページに戻る</a>
+    </div>
   </div>
 </body>
 </html>
-
-
