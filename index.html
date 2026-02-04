@@ -4,66 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>大石生物模試</title>
+
   <style>
     body {
-      background-color: #e6ffe6;
-      font-family: system-ui, sans-serif;
       margin: 0;
       padding: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: linear-gradient(135deg, #d4f7d4, #b2e6c8);
+      min-height: 100vh;
     }
 
     .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #ffffffee;
+      backdrop-filter: blur(6px);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     }
 
     h1 {
       text-align: center;
-      color: #206030;
-      font-size: 1.8rem;
-      margin-bottom: 16px;
+      font-size: 2.2rem;
+      color: #145a32;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      font-weight: 700;
     }
 
-    a.link {
-      display: block;
-      padding: 14px;
-      margin-bottom: 12px;
-      background-color: #ccffcc;
+    p {
+      text-align: center;
+      color: #2d4739;
+      margin-bottom: 30px;
+      font-size: 1.05rem;
+    }
+
+    .card {
+      background: #f6fff6;
+      border: 1px solid #c8eccc;
+      padding: 18px 20px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f3d2e;
+      margin-bottom: 8px;
+    }
+
+    .link {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 10px 14px;
+      background: #caffd0;
       border-radius: 8px;
       text-decoration: none;
-      color: #104020;
+      color: #0f3d2e;
       font-weight: 600;
-      border: 1px solid #a5e6a5;
-      font-size: 1rem;
+      border: 1px solid #a8e6b0;
+      transition: background 0.2s ease;
     }
 
-    a.link:hover {
-      background-color: #b8ffb8;
+    .link:hover {
+      background: #b6ffbf;
     }
 
     iframe {
       width: 100%;
       height: 80vh;
       border: none;
-      margin-top: 20px;
+      margin-top: 25px;
       display: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     }
 
     @media (max-width: 600px) {
       .container {
-        margin: 10px;
-        padding: 16px;
+        margin: 15px;
+        padding: 20px;
       }
       h1 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
       }
-      a.link {
-        font-size: 0.95rem;
-        padding: 12px;
+      .title {
+        font-size: 1rem;
       }
     }
   </style>
@@ -84,27 +118,40 @@
     <p>自作の生物模試を公開しています。受験前の実力チェックや復習にご利用ください。</p>
 
     <!-- 第1回 -->
-    <a class="link" onclick="openPDF('seibutumondai.pdf')">第1回 大石生物模試(全範囲)難易度★★★★★</a>
-    <a class="link" href="test1answer.pdf" download>▶ 第1回 解答用紙をダウンロード</a>
+    <div class="card">
+      <div class="title">第1回 大石生物模試（全範囲）★★★★★</div>
+      <a class="link" onclick="openPDF('seibutumondai.pdf')">問題を開く</a>
+      <a class="link" href="test1answer.pdf" download>解答用紙をダウンロード</a>
+    </div>
 
     <!-- 第2回 -->
-    <a class="link" onclick="openPDF('neurons.pdf')">第2回 大石生物模試(神経のみ)★★★</a>
-    <a class="link" href="test2answer.pdf" download>▶ 第2回 解答用紙をダウンロード</a>
+    <div class="card">
+      <div class="title">第2回 大石生物模試（神経）★★★</div>
+      <a class="link" onclick="openPDF('neurons.pdf')">問題を開く</a>
+      <a class="link" href="test2answer.pdf" download>解答用紙をダウンロード</a>
+    </div>
 
     <!-- 第3回 -->
-    <a class="link" onclick="openPDF('evolution.pdf')">第3回 大石生物模試(生物の進化のみ)★</a>
-    <a class="link" href="test3answer.pdf" download>▶ 第3回 解答用紙をダウンロード</a>
+    <div class="card">
+      <div class="title">第3回 大石生物模試（進化）★</div>
+      <a class="link" onclick="openPDF('evolution.pdf')">問題を開く</a>
+      <a class="link" href="test3answer.pdf" download>解答用紙をダウンロード</a>
+    </div>
 
     <!-- 第4回 -->
-    <a class="link" onclick="openPDF('homeostasis.pdf')">第4回 大石生物模試(ホメオスタシス)★★★★</a>
-    <a class="link" href="test4answer.pdf" download>▶ 第4回 解答用紙をダウンロード</a>
-    <p>解く順番は、神経、全範囲、恒常性、進化がおすすめです。</p>
+    <div class="card">
+      <div class="title">第4回 大石生物模試（ホメオスタシス）★★★★</div>
+      <a class="link" onclick="openPDF('homeostasis.pdf')">問題を開く</a>
+      <a class="link" href="test4answer.pdf" download>解答用紙をダウンロード</a>
+    </div>
+
+    <p>解く順番は、神経 → 全範囲 → 恒常性 → 進化 がおすすめです。</p>
 
     <iframe id="pdfViewer"></iframe>
 
-    <a class="link" href="answers.html">▶ 解答ページへ</a>
+    <div style="text-align:center; margin-top:20px;">
+      <a class="link" href="answers.html">▶ 解答ページへ</a>
+    </div>
   </div>
 </body>
 </html>
-
-
