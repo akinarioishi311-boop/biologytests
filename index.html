@@ -211,18 +211,21 @@
     <div style="text-align:center; margin-top:20px;">
       <a class="link" href="answers.html">▶ 解答ページへ</a>
     </div>
-<!-- コメント欄 -->
-<div style="margin-top:50px;">
-  <h2 style="text-align:center;">コメント欄</h2>
+    
+    <div id="comments" style="margin-top:50px;"></div>
 
-  <script src="https://utteranc.es/client.js"
-          repo="akinarioishi311-boop/biologytests"
-          issue-term="pathname"
-          label="comment"
-          theme="github-light"
-          crossorigin="anonymous"
-          async>
-  </script>
+<script>
+  const script = document.createElement("script");
+  script.src = "https://utteranc.es/client.js";
+  script.setAttribute("repo", "akinarioishi311-boop/biologytests");
+  script.setAttribute("issue-term", "pathname");
+  script.setAttribute("label", "comment");
+  script.setAttribute("theme", "github-light");
+  script.crossOrigin = "anonymous";
+  script.async = true;
+
+  document.getElementById("comments").appendChild(script);
+</script>
 </div>
   </div>
 
