@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="HqqTsRia_X5OXPRRb_TcotFakOPvtMRDRXbwLECDl38" />
 
   <style>
     body {
@@ -36,7 +35,6 @@
       font-size: 2.2rem;
       color: #145a32;
       margin-bottom: 10px;
-      letter-spacing: 1px;
       font-weight: 700;
     }
 
@@ -44,7 +42,6 @@
       text-align: center;
       color: #2d4739;
       margin-bottom: 30px;
-      font-size: 1.05rem;
     }
 
     .card {
@@ -79,6 +76,7 @@
       font-weight: 600;
       border: 1px solid #a8e6b0;
       transition: background 0.2s ease;
+      cursor: pointer;
     }
 
     .link:hover {
@@ -89,10 +87,16 @@
       width: 100%;
       height: 80vh;
       border: none;
-      margin-top: 25px;
+      margin-top: 20px;
       display: none;
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    #downloadArea {
+      display: none;
+      text-align: center;
+      margin-top: 10px;
     }
 
     @media (max-width: 600px) {
@@ -103,17 +107,21 @@
       h1 {
         font-size: 1.7rem;
       }
-      .title {
-        font-size: 1rem;
-      }
     }
   </style>
 
   <script>
     function openPDF(file) {
       const viewer = document.getElementById("pdfViewer");
+      const downloadArea = document.getElementById("downloadArea");
+      const downloadBtn = document.getElementById("downloadBtn");
+
       viewer.src = file;
       viewer.style.display = "block";
+
+      downloadBtn.href = file;
+      downloadArea.style.display = "block";
+
       viewer.scrollIntoView({ behavior: "smooth" });
     }
   </script>
@@ -122,7 +130,6 @@
 <body>
   <div class="container">
 
-    <!-- ロゴを追加 -->
     <img src="logo.png" alt="サイトロゴ" class="logo">
 
     <p>自作の生物模試を公開しています。受験前の実力チェックや復習にご利用ください。</p>
@@ -131,81 +138,104 @@
     <div class="card">
       <div class="title">第1回 大石生物模試（全範囲）★★★★★</div>
       <a class="link" onclick="openPDF('seibutumondai.pdf')">問題を開く</a>
-      <a class="link" href="test1answer.pdf" download>解答用紙をダウンロード</a>
+      <a class="link" href="test1answer.pdf" download>解答用紙DL</a>
     </div>
 
     <!-- 第2回 -->
     <div class="card">
       <div class="title">第2回 大石生物模試（神経）★★★</div>
       <a class="link" onclick="openPDF('neurons2.pdf')">問題を開く</a>
-      <a class="link" href="test2answer.pdf" download>解答用紙をダウンロード</a>
+      <a class="link" href="test2answer.pdf" download>解答用紙DL</a>
     </div>
 
     <!-- 第3回 -->
     <div class="card">
       <div class="title">第3回 大石生物模試（進化）★</div>
       <a class="link" onclick="openPDF('evolution.pdf')">問題を開く</a>
-      <a class="link" href="test3answer.pdf" download>解答用紙をダウンロード</a>
+      <a class="link" href="test3answer.pdf" download>解答用紙DL</a>
     </div>
 
     <!-- 第4回 -->
     <div class="card">
       <div class="title">第4回 大石生物模試（ホメオスタシス）★★★★</div>
       <a class="link" onclick="openPDF('homeostasis.pdf')">問題を開く</a>
-      <a class="link" href="test4answer.pdf" download>解答用紙をダウンロード</a>
+      <a class="link" href="test4answer.pdf" download>解答用紙DL</a>
     </div>
 
     <!-- 第5回 -->
     <div class="card">
-      <div class="title">第5回 大石生物模試（根本先生の論文内容スペシャル）★★★★</div>
+      <div class="title">第5回 大石生物模試（論文スペシャル）★★★★</div>
       <a class="link" onclick="openPDF('nemotopaper.pdf')">問題を開く</a>
-      <a class="link" href="pdf" download>解答用紙をダウンロード</a>
+      <a class="link" href="nemoto_answer.pdf" download>解答用紙DL</a>
     </div>
+
     <!-- 第6回 -->
     <div class="card">
       <div class="title">第6回 大石生物模試（数理生物学入門）★★★★★</div>
       <a class="link" onclick="openPDF('mathbiology.pdf')">問題を開く</a>
-      <a class="link" href="pdf" download>解答用紙準備中</a>
+      <a class="link" href="#">解答準備中</a>
     </div>
-    <!-- 第一話 -->
+
+    <!-- コラム -->
     <div class="card">
-      <div class="title">絶対に飽きない生物の話第一話～アスピリン～</div>
+      <div class="title">第一話 ～アスピリン～</div>
       <a class="link" onclick="openPDF('aspirin.pdf')">開く</a>
-      </div>
-    <!-- 第二話 -->
+    </div>
+
     <div class="card">
-      <div class="title">絶対に飽きない生物の話第二話～問；体内でpH調節にかかわる臓器を全て答えよ。～</div>
+      <div class="title">第二話 ～pH調節～</div>
       <a class="link" onclick="openPDF('ph.pdf')">開く</a>
-      </div>
-    <!-- 第三話 -->
+    </div>
+
     <div class="card">
-      <div class="title">絶対に飽きない生物の話第三話～alphafold～</div>
+      <div class="title">第三話 ～AlphaFold～</div>
       <a class="link" onclick="openPDF('alphafold.pdf')">開く</a>
-      </div>
-    <!-- 第四話 -->
+    </div>
+
     <div class="card">
-      <div class="title">絶対に飽きない生物の話第四話～ノーベル賞特集1,制御性T細胞～</div>
+      <div class="title">第四話 ～制御性T細胞～</div>
       <a class="link" onclick="openPDF('treg.pdf')">開く</a>
-      </div>
+    </div>
 
-    <p>解く順番は、神経 → 全範囲 → 恒常性 → 進化 がおすすめです。生物コラムは一週間ごとに更新予定です</p>
-    <p>2026.04.13最終更新</p>
+    <p>おすすめ順：神経 → 全範囲 → 恒常性 → 進化</p>
+    <p>2026.04.13 最終更新</p>
 
+    <!-- PDF表示 -->
     <iframe id="pdfViewer"></iframe>
+
+    <!-- ダウンロードボタン -->
+    <div id="downloadArea">
+      <a id="downloadBtn" class="link" download>このPDFをダウンロード</a>
+    </div>
 
     <div style="text-align:center; margin-top:20px;">
       <a class="link" href="answers.html">▶ 解答ページへ</a>
     </div>
+<!-- コメント欄 -->
+<div style="margin-top:50px;">
+  <h2 style="text-align:center;">コメント欄</h2>
+
+  <script src="https://utteranc.es/client.js"
+          repo="akinarioishi311-boop/biologytests"
+          issue-term="pathname"
+          label="comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
   </div>
+
   <h2 style="margin-top:40px;">コメント欄</h2>
 
-<script src="https://utteranc.es/client.js"
+  <script src="https://utteranc.es/client.js"
         repo="akinarioishi311-boop/biologytests"
         issue-term="pathname"
         label="comment"
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script>
+  </script>
+
 </body>
 </html>
