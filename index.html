@@ -214,26 +214,18 @@
     
     <div id="comments" style="margin-top:50px;"></div>
 
-<!-- コメント欄 -->
-<div id="comments" style="margin-top:50px;">
-  <h2 style="text-align:center;">コメント欄</h2>
-</div>
+<h2 style="text-align:center; margin-top:40px;">コメント欄</h2>
 
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const script = document.createElement("script");
-    script.src = "https://utteranc.es/client.js";
-    script.setAttribute("repo", "akinarioishi311-boop/biologytests");
-    script.setAttribute("issue-term", "pathname");
-    script.setAttribute("label", "comment");
-    script.setAttribute("theme", "github-light");
-    script.crossOrigin = "anonymous";
-    script.async = true;
-
-    document.getElementById("comments").appendChild(script);
-  });
+<script src="https://utteranc.es/client.js"
+        repo="akinarioishi311-boop/biologytests"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
 </script>
 </div>
+  
   </div>
 
 </body>
