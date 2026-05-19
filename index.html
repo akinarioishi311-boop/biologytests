@@ -233,27 +233,28 @@
       <a class="link" href="answers.html">▶ 解答ページへ</a>
     </div>
 <hr>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSflCSA2h67pc2RkarNhGTzvxafKtDqieDXJZrnWF3teWxELMw/formResponse" target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)">
+<p><input name="612941527" placeholder="名前" value="名無し" required></p>
+<p><input name="190369162" placeholder="メールアドレス" type="email"></p>
+<p><textarea name="195412829" placeholder="コメント" rows="10" cols="40" maxlength="400" id="wcheck" required></textarea></p>
+<input type="submit" id="submitbutton" value="送信">
+</form>
+<iframe onload='if(submitted){window.location="";}' id=hidden_iframe name=hidden_iframe style=display:none></iframe>
 
-<!-- 一言コメントフォーム START ----->
-<br>
-<table border="0" cellspacing="0" cellpadding="1">
-  <tr>
-    <td>
-<form method="POST" action="comment.php?rep=1" target="com">
-<span style="font-size:18px;font-weight:100;color:#ff0000">■ </span><b>一言コメントをどうぞ！</b>（100字まで）<br>
-<input type="text" id="comment" name="comment" size="80" style="width:535;border:1px solid #00ccff">
-<input type="submit" id="submit" value=" 送信 " style="width:54"> 
-    </td></form>
-  </tr>
-  <tr>
-    <td>
-<div id="commentv" style="font-size:13px;line-height:15px;color:#666699;width:580px;height:160px;border:1px solid #00ccff;padding:8px;overflow-y:scroll;display:none;"></div>
-<iframe name="com" src="comment.php" id="com" style="width:301px;height:201px;frameborder:0px;border:0px;padding:0px;overflow:hidden;display:none;"></iframe>
-    </td>
-  </tr>
-</table>
-<br>
-<!-- 一言コメントフォーム END ----->
+<script type="text/javascript">
+var NGComments = ["死ね","バカ",".exe"]; // 簡易的なNGワードの設定
+var regex = new RegExp(NGComments.join("|"));
+function test(wcheck) {
+	if (wcheck.match(regex) != null) {
+		alert("ERROR: コメントにNGワードが含まれています");
+		return false;
+	}
+	document.getElementById("submitbutton").disabled = true;
+	textareas = document.getElementsByTagName('textarea');
+	inputs = document.getElementsByTagName('input');
+	return submitted=!0;
+}
+</script>
 
 </body>
 </html>
