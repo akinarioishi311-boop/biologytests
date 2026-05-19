@@ -237,55 +237,128 @@
     <div style="text-align:center; margin-top:20px;">
       <a class="link" href="answers.html">▶ 解答ページへ</a>
     </div>
-<hr>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSflCSA2h67pc2RkarNhGTzvxafKtDqieDXJZrnWF3teWxELMw/formResponse" target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)">
-<p><input name="entry.612941527" placeholder="名前" value="名無し" required></p>
-<p><input name="entry.190369162" placeholder="メールアドレス" type="email"></p>
-<p><textarea name="entry.195412829" placeholder="コメント" rows="10" cols="40" maxlength="400" id="wcheck" required></textarea></p>
-<input type="submit" id="submitbutton" value="送信">
-</form>
-<iframe onload='if(submitted){window.location="";}' id=hidden_iframe name=hidden_iframe style=display:none></iframe>
+<style>
 
-<script>
-var submitted = false;
+/* ===== コメント欄全体 ===== */
 
-var NGComments = ["死ね","バカ",".exe"];
-var regex = new RegExp(NGComments.join("|"));
-
-function test(wcheck) {
-
-	if (regex.test(wcheck)) {
-		alert("ERROR: コメントにNGワードが含まれています");
-		return false;
-	}
-
-	document.getElementById("submitbutton").disabled = true;
-
-	submitted = true;
-	return true;
+#comments{
+	margin-top:40px;
 }
-</script>
 
-	  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+/* ===== コメントカード ===== */
+
+.comment-card{
+	background:#f8fff8;
+	border:1px solid #cfe9d2;
+	border-radius:16px;
+	padding:18px;
+	margin-bottom:18px;
+	box-shadow:0 3px 10px rgba(0,0,0,0.06);
+}
+
+/* ===== 上部 ===== */
+
+.comment-header{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	margin-bottom:10px;
+	flex-wrap:wrap;
+}
+
+/* 名前 */
+
+.comment-name{
+	font-weight:700;
+	color:#145a32;
+	font-size:1rem;
+}
+
+/* 時間 */
+
+.comment-time{
+	color:#6b7d70;
+	font-size:0.85rem;
+}
+
+/* 本文 */
+
+.comment-body{
+	white-space:pre-wrap;
+	line-height:1.7;
+	color:#233;
+	background:white;
+	padding:14px;
+	border-radius:10px;
+	border:1px solid #e5f3e7;
+}
+
+/* メールリンク */
+
+.comment-name a{
+	text-decoration:none;
+	color:inherit;
+}
+
+.comment-name a:hover{
+	text-decoration:underline;
+}
+
+</style>
+
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
 <div id="comments"></div>
+
 <script>
+
 d3.csv("https://docs.google.com/spreadsheets/d/1Y8svt9F4YGRMyuAsoxH_jvo80HDMm5M8EFxlKUEluTA/export?format=csv&range=A3:D", function(error, data){
+
 	data.reverse();  // 読み込んだデータを逆順にする
+
 	function replaceText(text) {
 		return text
-			.replace(/</g, "&lt;")
-			//.replace(/置き換え前の文字列/g, "置き換え後の文字列");
+			.replace(/</g, "&lt;");
 	}
+
 	var text = "";
+
 	for(var i=0; i<data.length; i++){
+
 		var name = replaceText(data[i].Name);
 		var mail = replaceText(data[i].Mail);
 		var timestamp = replaceText(data[i].Timestamp);
 		var comments = replaceText(data[i].Comments);
-		text += i+1 + " 名前: <a href=\"mailto:" + mail + "\">" + name + "</a> " + timestamp + "<pre>" + comments + "</pre>";
+
+		text +=
+		'<div class="comment-card">' +
+
+			'<div class="comment-header">' +
+
+				'<div class="comment-name">' +
+				(i+1) +
+				'. 名前: <a href="mailto:' + mail + '">' +
+				name +
+				'</a>' +
+				'</div>' +
+
+				'<div class="comment-time">' +
+				timestamp +
+				'</div>' +
+
+			'</div>' +
+
+			'<div class="comment-body">' +
+			comments +
+			'</div>' +
+
+		'</div>';
 	}
+
 	d3.select("#comments").html(text);
+
 });
+
 </script>
 
 </body>
