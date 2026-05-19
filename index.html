@@ -241,18 +241,23 @@
 </form>
 <iframe onload='if(submitted){window.location="";}' id=hidden_iframe name=hidden_iframe style=display:none></iframe>
 
-<script type="text/javascript">
-var NGComments = ["死ね","バカ",".exe"]; // 簡易的なNGワードの設定
+<script>
+var submitted = false;
+
+var NGComments = ["死ね","バカ",".exe"];
 var regex = new RegExp(NGComments.join("|"));
+
 function test(wcheck) {
-	if (wcheck.match(regex) != null) {
+
+	if (regex.test(wcheck)) {
 		alert("ERROR: コメントにNGワードが含まれています");
 		return false;
 	}
+
 	document.getElementById("submitbutton").disabled = true;
-	textareas = document.getElementsByTagName('textarea');
-	inputs = document.getElementsByTagName('input');
-	return submitted=!0;
+
+	submitted = true;
+	return true;
 }
 </script>
 
