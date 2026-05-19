@@ -104,10 +104,72 @@
         margin: 15px;
         padding: 20px;
       }
+
       h1 {
         font-size: 1.7rem;
       }
     }
+
+    /* ===== コメント欄 ===== */
+
+    input,
+    textarea{
+      width:100%;
+      max-width:100%;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid #cfe9d2;
+      box-sizing:border-box;
+      font-size:1rem;
+      background:white;
+      margin-top:6px;
+    }
+
+    textarea{
+      line-height:1.7;
+      resize:vertical;
+    }
+
+    #submitbutton{
+      width:auto;
+      background:#caffd0;
+      border:none;
+      padding:12px 22px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    #submitbutton:hover{
+      background:#b6ffbf;
+    }
+
+    #comments{
+      margin-top:40px;
+    }
+
+    #comments pre{
+      background:white;
+      border:1px solid #dcefdc;
+      border-radius:12px;
+      padding:14px;
+      line-height:1.7;
+      color:#233;
+      white-space:pre-wrap;
+      box-shadow:0 3px 10px rgba(0,0,0,0.05);
+      margin-bottom:28px;
+    }
+
+    #comments a{
+      color:#145a32;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    #comments a:hover{
+      text-decoration:underline;
+    }
+
   </style>
 
   <script>
@@ -128,6 +190,7 @@
 </head>
 
 <body>
+
   <div class="container">
 
     <img src="logo.png" alt="サイトロゴ" class="logo">
@@ -170,61 +233,6 @@
       <a class="link" href="#">解答準備中</a>
     </div>
 
-    <div class="card">
-      <div class="title">第一話 ～アスピリン～</div>
-      <a class="link" onclick="openPDF('aspirin.pdf')">開く</a>
-    </div>
-
-    <div class="card">
-      <div class="title">第二話 ～pH調節～</div>
-      <a class="link" onclick="openPDF('ph.pdf')">開く</a>
-    </div>
-
-    <div class="card">
-      <div class="title">第三話 ～AlphaFold～</div>
-      <a class="link" onclick="openPDF('alphafold.pdf')">開く</a>
-    </div>
-
-    <div class="card">
-      <div class="title">第四話 ～制御性T細胞～</div>
-      <a class="link" onclick="openPDF('treg.pdf')">開く</a>
-    </div>
-    
-    <div class="card">
-      <div class="title">第五話 ～オートファジー～</div>
-      <a class="link" onclick="openPDF('autophagy.pdf')">開く</a>
-    </div>
-
-    <div class="card">
-      <div class="title">第六話 ～ロトカ・ボルテラ式～</div>
-      <a class="link" onclick="openPDF('rotka.pdf')">開く</a>
-    </div>
-
-    <div class="card">
-      <div class="title">第七話 ～耳の発生(ややこしいお話)～</div>
-      <a class="link" onclick="openPDF('ear.pdf')">開く</a>
-    </div>
-    
-    <div class="card">
-      <div class="title">第八話 ～先生！NADとFADって何が違うんですか？～</div>
-      <a class="link" onclick="openPDF('NAD.pdf')">開く</a>
-    </div>
-
-    <div class="card">
-      <div class="title">第九話 ～GHK方程式～</div>
-      <a class="link" onclick="openPDF('ghk.pdf')">開く</a>
-    </div>
-
-     <div class="card">
-      <div class="title">第十話 ～中学入試を解いてみよう～</div>
-      <a class="link" onclick="openPDF('chugaku.pdf')">開く</a>
-    </div>
-
-	  <div class="card">
-      <div class="title">第十一話 ～アンモニア～</div>
-      <a class="link" onclick="openPDF('anmonia.pdf')">開く</a>
-    </div>
-    
     <p>おすすめ順：神経 → 全範囲 → 恒常性 → 進化</p>
     <p>2026.04.13 最終更新</p>
 
@@ -237,129 +245,106 @@
     <div style="text-align:center; margin-top:20px;">
       <a class="link" href="answers.html">▶ 解答ページへ</a>
     </div>
-<style>
 
-/* ===== コメント欄全体 ===== */
+    <hr>
 
-#comments{
-	margin-top:40px;
-}
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSflCSA2h67pc2RkarNhGTzvxafKtDqieDXJZrnWF3teWxELMw/formResponse"
+          target="hidden_iframe"
+          method="post"
+          onsubmit="return test(this.wcheck.value)">
 
-/* ===== コメントカード ===== */
+      <p>
+        <input name="entry.612941527" placeholder="名前" value="名無し" required>
+      </p>
 
-.comment-card{
-	background:#f8fff8;
-	border:1px solid #cfe9d2;
-	border-radius:16px;
-	padding:18px;
-	margin-bottom:18px;
-	box-shadow:0 3px 10px rgba(0,0,0,0.06);
-}
+      <p>
+        <input name="entry.190369162" placeholder="メールアドレス" type="email">
+      </p>
 
-/* ===== 上部 ===== */
+      <p>
+        <textarea name="entry.195412829"
+                  placeholder="コメント"
+                  rows="10"
+                  cols="40"
+                  maxlength="400"
+                  id="wcheck"
+                  required></textarea>
+      </p>
 
-.comment-header{
-	display:flex;
-	justify-content:space-between;
-	align-items:center;
-	margin-bottom:10px;
-	flex-wrap:wrap;
-}
+      <input type="submit" id="submitbutton" value="送信">
 
-/* 名前 */
+    </form>
 
-.comment-name{
-	font-weight:700;
-	color:#145a32;
-	font-size:1rem;
-}
+    <iframe
+      onload='if(submitted){window.location="";}'
+      id="hidden_iframe"
+      name="hidden_iframe"
+      style="display:none">
+    </iframe>
 
-/* 時間 */
+    <script>
+      var submitted = false;
 
-.comment-time{
-	color:#6b7d70;
-	font-size:0.85rem;
-}
+      var NGComments = ["死ね","バカ",".exe"];
+      var regex = new RegExp(NGComments.join("|"));
 
-/* 本文 */
+      function test(wcheck) {
 
-.comment-body{
-	white-space:pre-wrap;
-	line-height:1.7;
-	color:#233;
-	background:white;
-	padding:14px;
-	border-radius:10px;
-	border:1px solid #e5f3e7;
-}
+        if (regex.test(wcheck)) {
+          alert("ERROR: コメントにNGワードが含まれています");
+          return false;
+        }
 
-/* メールリンク */
+        document.getElementById("submitbutton").disabled = true;
 
-.comment-name a{
-	text-decoration:none;
-	color:inherit;
-}
+        submitted = true;
+        return true;
+      }
+    </script>
 
-.comment-name a:hover{
-	text-decoration:underline;
-}
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
-</style>
+    <div id="comments"></div>
 
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>
+      d3.csv("https://docs.google.com/spreadsheets/d/1Y8svt9F4YGRMyuAsoxH_jvo80HDMm5M8EFxlKUEluTA/export?format=csv&range=A3:D", function(error, data){
 
-<div id="comments"></div>
+        data.reverse();
 
-<script>
+        function replaceText(text) {
+          return text
+            .replace(/</g, "&lt;");
+        }
 
-d3.csv("https://docs.google.com/spreadsheets/d/1Y8svt9F4YGRMyuAsoxH_jvo80HDMm5M8EFxlKUEluTA/export?format=csv&range=A3:D", function(error, data){
+        var text = "";
 
-	data.reverse();  // 読み込んだデータを逆順にする
+        for(var i=0; i<data.length; i++){
 
-	function replaceText(text) {
-		return text
-			.replace(/</g, "&lt;");
-	}
+          var name = replaceText(data[i].Name);
+          var mail = replaceText(data[i].Mail);
+          var timestamp = replaceText(data[i].Timestamp);
+          var comments = replaceText(data[i].Comments);
 
-	var text = "";
+          text +=
+          '<div style="margin-bottom:24px;">' +
+          (i+1) +
+          ' 名前: <a href="mailto:' + mail + '">' +
+          name +
+          '</a> ' +
+          '<span style="color:#6b7d70; font-size:0.9rem;">' +
+          timestamp +
+          '</span>' +
+          '<pre>' +
+          comments +
+          '</pre>' +
+          '</div>';
+        }
 
-	for(var i=0; i<data.length; i++){
+        d3.select("#comments").html(text);
+      });
+    </script>
 
-		var name = replaceText(data[i].Name);
-		var mail = replaceText(data[i].Mail);
-		var timestamp = replaceText(data[i].Timestamp);
-		var comments = replaceText(data[i].Comments);
-
-		text +=
-		'<div class="comment-card">' +
-
-			'<div class="comment-header">' +
-
-				'<div class="comment-name">' +
-				(i+1) +
-				'. 名前: <a href="mailto:' + mail + '">' +
-				name +
-				'</a>' +
-				'</div>' +
-
-				'<div class="comment-time">' +
-				timestamp +
-				'</div>' +
-
-			'</div>' +
-
-			'<div class="comment-body">' +
-			comments +
-			'</div>' +
-
-		'</div>';
-	}
-
-	d3.select("#comments").html(text);
-
-});
-
-</script>
+  </div>
 
 </body>
 </html>
